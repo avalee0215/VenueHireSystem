@@ -22,9 +22,16 @@ public class VenueHireSystem {
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
     // TODO implement this method
+    String venueempty = venueName.trim(); // erase all the space in the venueCode string to check it is empty or not
 
+    if (venueempty.isEmpty()) // if the trimmed string is empty, print the message
+    {
+      MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
+    }
+    else
+  {
     MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName,venueCode); // Print out Successfully created venue by using MessageCli
-
+  }
     
   }
 
