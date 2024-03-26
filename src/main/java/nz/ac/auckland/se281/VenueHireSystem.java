@@ -22,10 +22,14 @@ public class VenueHireSystem {
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
     // TODO implement this method
+    int capacitytonumber = Integer.parseInt(capacityInput);
 
     if (venueName.trim().isEmpty()) // if the trimmed string is empty, print the message
     {
       MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
+    }
+    else if (capacitytonumber <= 0){
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity"," positive"); 
     }
     else
   {
