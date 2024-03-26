@@ -53,9 +53,10 @@ public class VenueHireSystem {
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
     // TODO implement this method
     int capacitytonumber = Integer.parseInt(capacityInput);
-    int hireFeetonumber = Integer.parseInt(hireFeeInput);
     boolean hireFeeinteger = true;
     hireFeeinteger = hireFeeInput.matches("\\d+");
+
+    
 
     if (venueName.trim().isEmpty()) // if the trimmed string is empty, print the message
     {
@@ -64,12 +65,18 @@ public class VenueHireSystem {
     else if (capacitytonumber <= 0){
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity"," positive"); 
     }
-    else if (hireFeetonumber <= 0)
-    {
-      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee"," positive"); 
-    }
+    
     else if (hireFeeinteger != true){
-      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+      try{
+        int hirefeetonumber = Integer.parseInt(hireFeeInput);
+        if (hirefeetonumber <=0)
+        {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee"," positive"); 
+        }
+      }
+      catch(NumberFormatException e){
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+      }
     }
     else
   {
@@ -83,6 +90,7 @@ public class VenueHireSystem {
   }
     
   }
+
 
   public void setSystemDate(String dateInput) {
     // TODO implement this method
