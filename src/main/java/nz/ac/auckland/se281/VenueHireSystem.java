@@ -30,19 +30,28 @@ public class VenueHireSystem {
     else if (0<venuelist.size() && venuelist.size()<10){ // change i to venuelist.size
       if (venuelist.size()==1) // change i to venuelist.size
       {
-        MessageCli.NUMBER_VENUES.printMessage("is", venuenumber.get(0), "");
+        MessageCli.NUMBER_VENUES.printMessage("is", venuenumber.get(0), ""); //print the message stating how many venues are there. In this case, one.
 
       }
       else {
         int venuelistsize = venuelist.size()-1;
-        MessageCli.NUMBER_VENUES.printMessage("are", venuenumber.get(venuelistsize), "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", venuenumber.get(venuelistsize), "s"); //print the message stating how many venues are there
       }
       for (int j = 0; j<venuelist.size(); j++){
         venuesave venue = venuelist.get(j); //change code to use modified venuelist.
         MessageCli.VENUE_ENTRY.printMessage(venue.getvenuename(),venue.getvenueCode(),venue.getcapacity(),venue.gethirefee());
       }
-
     }
+    else // if created venues are 10 or more than 10
+    {
+      int venuelistsize = venuelist.size();
+      MessageCli.NUMBER_VENUES.printMessage("are",String.valueOf(venuelistsize),"s"); //print the message stating how many venues are there
+      for (int j = 0; j<venuelist.size(); j++){
+        venuesave venue = venuelist.get(j);
+        MessageCli.VENUE_ENTRY.printMessage(venue.getvenuename(),venue.getvenueCode(),venue.getcapacity(),venue.gethirefee());
+      }
+    }
+
     
     
   }  
