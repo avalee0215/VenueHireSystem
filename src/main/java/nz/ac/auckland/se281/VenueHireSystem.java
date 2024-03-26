@@ -1,11 +1,11 @@
 package nz.ac.auckland.se281;
 
-
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  
+  ArrayList<String> venuelist = new ArrayList<>(); //New Arraylist to save venue's information
 
   public VenueHireSystem() {
 
@@ -38,7 +38,12 @@ hireFeeinteger = hireFeeInput.matches("\\d+");
     }
     else
   {
+
     MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName,venueCode); // Print out Successfully created venue by using MessageCli
+    venuelist.add(venueName); //Add information in the venuelist
+    venuelist.add(venueCode);
+    venuelist.add(capacityInput);
+    venuelist.add(hireFeeInput);
   }
     
   }
