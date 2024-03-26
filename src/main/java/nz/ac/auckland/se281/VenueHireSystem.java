@@ -6,7 +6,7 @@ import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
   ArrayList<String> venuelist = new ArrayList<>(); //New Arraylist to save venue's information
-
+  int i = 0; // integer that saves the number of venue. (How many venue has been made)
   public VenueHireSystem() {
 
   }
@@ -40,6 +40,7 @@ hireFeeinteger = hireFeeInput.matches("\\d+");
   {
 
     MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName,venueCode); // Print out Successfully created venue by using MessageCli
+    i++; //add the number of venue
     venuelist.add(venueName); //Add information in the venuelist
     venuelist.add(venueCode);
     venuelist.add(capacityInput);
