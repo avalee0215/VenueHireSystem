@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  ArrayList<venuesave> venuelist =
+  ArrayList<venueSave> venuelist =
       new ArrayList<>(); // New Arraylist to save venue's information. Change <String> to
 
   // <venuesave> so we can use the constructor
@@ -26,12 +26,10 @@ public class VenueHireSystem {
     venuenumber.add("eight");
     venuenumber.add("nine");
 
-    if (venuelist.size() == 0) // when there is no venue, // change i to venuelist.size
-    {
+    if (venuelist.size() == 0) { // when there is no venue, // change i to venuelist.size
       MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
     } else if (0 < venuelist.size() && venuelist.size() < 10) { // change i to venuelist.size
-      if (venuelist.size() == 1) // change i to venuelist.size
-      {
+      if (venuelist.size() == 1) { // change i to venuelist.size
         MessageCli.NUMBER_VENUES.printMessage(
             "is",
             venuenumber.get(0),
@@ -45,19 +43,18 @@ public class VenueHireSystem {
             "s"); // print the message stating how many venues are there
       }
       for (int j = 0; j < venuelist.size(); j++) {
-        venuesave venue = venuelist.get(j); // change code to use modified venuelist.
+        venueSave venue = venuelist.get(j); // change code to use modified venuelist.
         MessageCli.VENUE_ENTRY.printMessage(
             venue.getvenuename(), venue.getvenueCode(), venue.getcapacity(), venue.gethirefee());
       }
-    } else // if created venues are 10 or more than 10
-    {
+    } else { // if created venues are 10 or more than 10
       int venuelistsize = venuelist.size();
       MessageCli.NUMBER_VENUES.printMessage(
           "are",
           String.valueOf(venuelistsize),
           "s"); // print the message stating how many venues are there
       for (int j = 0; j < venuelist.size(); j++) {
-        venuesave venue = venuelist.get(j);
+        venueSave venue = venuelist.get(j);
         MessageCli.VENUE_ENTRY.printMessage(
             venue.getvenuename(), venue.getvenueCode(), venue.getcapacity(), venue.gethirefee());
       }
@@ -76,7 +73,7 @@ public class VenueHireSystem {
     int repeatedvenuenumber = 0;
 
     // Check if the venue code is already used
-    for (venuesave item : venuelist) {
+    for (venueSave item : venuelist) {
       if (item.getvenueCode().equals(venueCode)) {
         repeatedvenueCode = true;
         repeatedvenuenumber = venuelist.indexOf(item);
@@ -84,8 +81,7 @@ public class VenueHireSystem {
       }
     }
 
-    if (venueName.trim().isEmpty()) // if the trimmed string is empty, print the message
-    {
+    if (venueName.trim().isEmpty()) { // if the trimmed string is empty, print the message
       MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
     } else if (capacitytonumber <= 0) {
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
@@ -98,8 +94,7 @@ public class VenueHireSystem {
       } catch (NumberFormatException e) {
         MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
       }
-    } else if (repeatedvenueCode) // If the code already used,
-    {
+    } else if (repeatedvenueCode) { // If the code already used,
       String usedvenue =
           venuelist
               .get(repeatedvenuenumber)
@@ -110,7 +105,7 @@ public class VenueHireSystem {
       MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(
           venueName, venueCode); // Print out Successfully created venue by using MessageCli
       venuelist.add(
-          new venuesave(
+          new venueSave(
               venueName,
               venueCode,
               capacityInput,
