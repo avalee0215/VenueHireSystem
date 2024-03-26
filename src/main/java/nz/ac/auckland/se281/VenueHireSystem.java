@@ -5,8 +5,7 @@ import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  ArrayList<String> venuelist = new ArrayList<>(); //New Arraylist to save venue's information
-  int i = 0; // integer that saves the number of venue. (How many venue has been made)
+  ArrayList<venuesave> venuelist = new ArrayList<>(); //New Arraylist to save venue's information. Change <String> to <venuesave> so we can use the constructor
   public VenueHireSystem() {
 
   }
@@ -25,21 +24,22 @@ public class VenueHireSystem {
     venuenumber.add("eight");
     venuenumber.add("nine");
 
-    if (i==0) // when there is no venue,
+    if (venuelist.size()==0) // when there is no venue, // change i to venuelist.size
     { MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
     }
-    else if (0<i && i<10){
-      if (i==1)
+    else if (0<venuelist.size() && venuelist.size()<10){ // change i to venuelist.size
+      if (venuelist.size()==1) // change i to venuelist.size
       {
-        MessageCli.NUMBER_VENUES.printMessage("is", venuenumber.get(i-1), "");
+        MessageCli.NUMBER_VENUES.printMessage("is", venuenumber.get(0), "");
 
       }
       else {
-        MessageCli.NUMBER_VENUES.printMessage("are", venuenumber.get(i-1), "s");
+        int venuelistsize = venuelist.size()-1;
+        MessageCli.NUMBER_VENUES.printMessage("are", venuenumber.get(venuelistsize), "s");
       }
-      for (int j = 0; j<venuelist.size(); ){
-        MessageCli.VENUE_ENTRY.printMessage(venuelist.get(j), venuelist.get(j+1), venuelist.get(j+2), venuelist.get(j+3));
-        j = j+4;
+      for (int j = 0; j<venuelist.size(); j++){
+        venuesave venue = venuelist.get(j); //change code to use modified venuelist.
+        MessageCli.VENUE_ENTRY.printMessage(venue.getvenuename(),venue.getvenueCode(),venue.getcapacity(),venue.gethirefee());
       }
 
     }
@@ -82,11 +82,7 @@ public class VenueHireSystem {
   {
 
     MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName,venueCode); // Print out Successfully created venue by using MessageCli
-    i++; //add the number of venue
-    venuelist.add(venueName); //Add information in the venuelist
-    venuelist.add(venueCode);
-    venuelist.add(capacityInput);
-    venuelist.add(hireFeeInput);
+    venuelist.add(new venuesave(venueName, venueCode, capacityInput, hireFeeInput)); // add venue's information in the venuelist
   }
     
   }
