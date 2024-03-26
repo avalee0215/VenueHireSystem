@@ -1,19 +1,30 @@
 package nz.ac.auckland.se281;
 
+
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
+  
 
-  public VenueHireSystem() {}
+  public VenueHireSystem() {
+
+  }
 
   public void printVenues() {
     // TODO implement this method
-  }
+    System.out.println("There are no venues in the system. Please create a venue first."); //printout for "There are no venues in the system. Please create a venue first."
+    }
+    
+    
+  
 
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
     // TODO implement this method
+    
+
+    
   }
 
   public void setSystemDate(String dateInput) {
