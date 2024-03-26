@@ -25,8 +25,24 @@ public class VenueHireSystem {
     venuenumber.add("eight");
     venuenumber.add("nine");
 
-      MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
-    
+    if (i==0) // when there is no venue,
+    { MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
+    }
+    else if (0<i && i<10){
+      if (i==1)
+      {
+        MessageCli.NUMBER_VENUES.printMessage("is", venuenumber.get(i-1), "");
+
+      }
+      else {
+        MessageCli.NUMBER_VENUES.printMessage("are", venuenumber.get(i-1), "s");
+      }
+      for (int j = 0; j<venuelist.size(); ){
+        MessageCli.VENUE_ENTRY.printMessage(venuelist.get(j), venuelist.get(j+1), venuelist.get(j+2), venuelist.get(j+3));
+        j = j+4;
+      }
+
+    }
     
     
   }  
