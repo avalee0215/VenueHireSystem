@@ -13,9 +13,23 @@ public class VenueHireSystem {
 
   public void printVenues() {
     // TODO implement this method
-    MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
-    }
     
+    ArrayList<String> venuenumber = new ArrayList<>(); // Create the arraylist that save one to nine
+    venuenumber.add("one");
+    venuenumber.add("two");
+    venuenumber.add("three");
+    venuenumber.add("four");
+    venuenumber.add("five");
+    venuenumber.add("six");
+    venuenumber.add("seven");
+    venuenumber.add("eight");
+    venuenumber.add("nine");
+
+      MessageCli.NO_VENUES.printMessage(); // Use MessageCli to print
+    
+    
+    
+  }  
     
   
 
