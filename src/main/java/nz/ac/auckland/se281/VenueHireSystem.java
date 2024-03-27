@@ -69,9 +69,23 @@ public class VenueHireSystem {
     // TODO implement this method
     int capacitytonumber = Integer.parseInt(capacityInput); // convert string to integer
     boolean hireFeeinteger =
-        true; // check that the hireFeeinput is integer or not initially (create it to use in the if
+        false; // check that the hireFeeinput is integer or not initially (create it to use in the
+    // if
     // else statement)
-    hireFeeinteger = hireFeeInput.matches("\\d+");
+
+    try {
+      int hirefeetonumber = Integer.parseInt(hireFeeInput);
+      if (hirefeetonumber > 0) { // Check if hire fee is a positive integer
+        hireFeeinteger = true;
+      } else {
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
+        return;
+      }
+    } catch (NumberFormatException e) {
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+      return;
+    }
+
     boolean repeatedvenueCode = false;
     int repeatedvenuenumber = 0;
 
@@ -89,15 +103,6 @@ public class VenueHireSystem {
       MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
     } else if (capacitytonumber <= 0) {
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
-    } else if (hireFeeinteger != true) {
-      try {
-        int hirefeetonumber = Integer.parseInt(hireFeeInput);
-        if (hirefeetonumber <= 0) {
-          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
-        }
-      } catch (NumberFormatException e) {
-        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
-      }
     } else if (repeatedvenueCode) // If the code already used,
     {
       String usedvenue =
