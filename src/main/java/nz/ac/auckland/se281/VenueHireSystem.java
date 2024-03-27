@@ -67,7 +67,6 @@ public class VenueHireSystem {
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
     // TODO implement this method
-    int capacitytonumber = Integer.parseInt(capacityInput); // convert string to integer
     boolean hireFeeinteger =
         false; // check that the hireFeeinput is integer or not initially (create it to use in the
     // if
@@ -86,6 +85,20 @@ public class VenueHireSystem {
       return;
     }
 
+    boolean capacityinteger = false;
+    try {
+      int capacitytonumber = Integer.parseInt(capacityInput);
+      if (capacitytonumber > 0) { // Check if hire fee is a positive integer
+        capacityinteger = true;
+      } else {
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
+        return;
+      }
+    } catch (NumberFormatException e) {
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
+      return;
+    }
+
     boolean repeatedvenueCode = false;
     int repeatedvenuenumber = 0;
 
@@ -101,8 +114,6 @@ public class VenueHireSystem {
     if (venueName.trim().isEmpty()) // if the trimmed string is empty, print the message
     {
       MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
-    } else if (capacitytonumber <= 0) {
-      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
     } else if (repeatedvenueCode) // If the code already used,
     {
       String usedvenue =
