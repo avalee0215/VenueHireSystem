@@ -134,14 +134,20 @@ public class VenueHireSystem {
     }
   }
 
+  // Use object&instances method to save the currentdate
+  String currentdate;
+
   public void setSystemDate(String dateInput) {
     // TODO implement this method
     // Set the system's date to the specificed data and prints a confirmation message
+    this.currentdate = dateInput;
     MessageCli.DATE_SET.printMessage(dateInput);
   }
 
   public void printSystemDate() {
     // TODO implement this method
+    // prints the system's current date
+    MessageCli.CURRENT_DATE.printMessage(currentdate);
   }
 
   public void makeBooking(String[] options) {
