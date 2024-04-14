@@ -156,6 +156,10 @@ public class VenueHireSystem {
 
   public void makeBooking(String[] options) {
     // TODO implement this method
+    // the system's date must be set
+    if (currentdate == null) {
+      MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
+    }
   }
 
   public void printBookings(String venueCode) {
