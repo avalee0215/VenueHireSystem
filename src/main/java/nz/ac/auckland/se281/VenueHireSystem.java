@@ -159,6 +159,9 @@ public class VenueHireSystem {
     // the system's date must be set
     if (currentdate == null) {
       MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
+    } else if (venuelist.size() == 0) {
+      MessageCli.BOOKING_NOT_MADE_NO_VENUES
+          .printMessage(); // There must be at least one venue in the system
     }
   }
 
