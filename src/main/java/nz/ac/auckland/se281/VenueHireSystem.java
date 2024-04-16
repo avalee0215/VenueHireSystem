@@ -172,8 +172,22 @@ public class VenueHireSystem {
         currentdate,
         options[
             1])) { // The booking date must not be in the past (today or later is OK in terms of the
-                   // current system date).
+      // current system date).
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1]);
+    }
+    // The venue must be available on the specified date (?)
+    else {
+      String bookingVenueName = "";
+      for (venuesave venue : venuelist) {
+        if (venue.getvenueCode().equals(options[0])) {
+          bookingVenueName = venue.getvenuename();
+        }
+      }
+      MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
+          BookingReferenceGenerator.generateBookingReference(),
+          bookingVenueName,
+          options[1],
+          options[3]); // Successfully booking message
     }
   }
 
@@ -185,7 +199,7 @@ public class VenueHireSystem {
       int compareint = Integer.parseInt(separatecompare[i]);
       if (currentint
           > compareint) { // if the current date is larger than booking date, it means the booking
-                          // is unavailable.
+        // is unavailable.
         return false; // return false in this case and break the class
       }
     }
