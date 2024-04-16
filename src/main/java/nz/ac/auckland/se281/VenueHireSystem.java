@@ -168,7 +168,28 @@ public class VenueHireSystem {
     } else if (!venuecodelist.contains(options[0])) {
       MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(
           options[0]); // The venue code must exist,
+    } else if (!compareDate(
+        currentdate,
+        options[
+            1])) { // The booking date must not be in the past (today or later is OK in terms of the
+                   // current system date).
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1]);
     }
+  }
+
+  private static boolean compareDate(String current, String compare) {
+    String[] separatecurrent = current.split("/"); // separate both strings by day, month, and year
+    String[] separatecompare = compare.split("/");
+    for (int i = 2; i >= 0; i--) {
+      int currentint = Integer.parseInt(separatecurrent[i]); // compare year - month - date order
+      int compareint = Integer.parseInt(separatecompare[i]);
+      if (currentint
+          > compareint) { // if the current date is larger than booking date, it means the booking
+                          // is unavailable.
+        return false; // return false in this case and break the class
+      }
+    }
+    return true;
   }
 
   public void printBookings(String venueCode) {
