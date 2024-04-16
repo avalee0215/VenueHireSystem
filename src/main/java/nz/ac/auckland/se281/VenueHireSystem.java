@@ -7,8 +7,9 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
   ArrayList<venuesave> venuelist =
       new ArrayList<>(); // New Arraylist to save venue's information. Change <String> to
-
   // <venuesave> so we can use the constructor
+  ArrayList<String> venuecodelist =
+      new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
 
   public VenueHireSystem() {}
 
@@ -131,6 +132,7 @@ public class VenueHireSystem {
               venueCode,
               capacityInput,
               hireFeeInput)); // add venue's information in the venuelist
+      venuecodelist.add(venueCode); // add venue code separately to make a booking
     }
   }
 
@@ -157,11 +159,15 @@ public class VenueHireSystem {
   public void makeBooking(String[] options) {
     // TODO implement this method
     // the system's date must be set
+
     if (currentdate == null) {
       MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
     } else if (venuelist.size() == 0) {
       MessageCli.BOOKING_NOT_MADE_NO_VENUES
           .printMessage(); // There must be at least one venue in the system
+    } else if (!venuecodelist.contains(options[0])) {
+      MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(
+          options[0]); // The venue code must exist,
     }
   }
 
