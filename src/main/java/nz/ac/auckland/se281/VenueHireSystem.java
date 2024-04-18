@@ -246,6 +246,10 @@ public class VenueHireSystem {
 
   public void printBookings(String venueCode) {
     // TODO implement this method
+    if (!venuecodelist.contains(venueCode)) { // If venue code doesn't exist
+      MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
+      return;
+    }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
