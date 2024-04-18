@@ -357,9 +357,10 @@ public class VenueHireSystem {
       }
     }
 
-    // Because the music service is only one, save the cost of the music service only and print out
-    // the success message.
-    this.musicTotal = "500";
+    MusicService musicService = new MusicService();
+    musicTotal = musicService.totalCost;
+
+    // Successful message of music
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
 
