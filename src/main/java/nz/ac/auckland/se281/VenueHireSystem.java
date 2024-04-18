@@ -250,6 +250,16 @@ public class VenueHireSystem {
       MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
       return;
     }
+
+    // If venue code exist
+    String venueName = "";
+    for (venuesave venue : venuelist) {
+      if (venue.getvenueCode().equals(venueCode)) {
+        venueName = venue.getvenuename();
+        MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName); // Header
+        break;
+      }
+    }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
