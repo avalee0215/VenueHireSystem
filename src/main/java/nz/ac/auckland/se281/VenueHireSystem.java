@@ -10,6 +10,8 @@ public class VenueHireSystem {
   // <venuesave> so we can use the constructor
   ArrayList<String> venuecodelist =
       new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
+  ArrayList<BookingSave> bookinglist =
+      new ArrayList<>(); // Add a new arraylist with bookinginformation for task 2
 
   public VenueHireSystem() {}
 
@@ -160,6 +162,14 @@ public class VenueHireSystem {
     // TODO implement this method
     // the system's date must be set
 
+    for (BookingSave booking : bookinglist) {
+      if (booking.BookingCode.equals(options[0]) && booking.BookingDate.equals(options[1])) {
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
+            booking.BookingName, booking.BookingDate);
+        return;
+      }
+    }
+
     if (currentdate == null) {
       MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
     } else if (venuelist.size() == 0) {
@@ -183,11 +193,14 @@ public class VenueHireSystem {
           bookingVenueName = venue.getvenuename();
         }
       }
+      String Bookingreference = BookingReferenceGenerator.generateBookingReference();
       MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-          BookingReferenceGenerator.generateBookingReference(),
+          Bookingreference,
           bookingVenueName,
           options[1],
           options[3]); // Successfully booking message
+      bookinglist.add(
+          new BookingSave(bookingVenueName, options[0], options[1], options[2], options[3]));
     }
   }
 
