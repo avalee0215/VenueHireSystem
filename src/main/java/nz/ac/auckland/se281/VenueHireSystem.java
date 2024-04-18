@@ -256,9 +256,24 @@ public class VenueHireSystem {
     for (venuesave venue : venuelist) {
       if (venue.getvenueCode().equals(venueCode)) {
         venueName = venue.getvenuename();
-        MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName); // Header
+        MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName); // Print the Header
         break;
       }
+    }
+
+    // If venue code does exist in the bookinglist
+    boolean exist = false;
+    for (BookingSave booking : bookinglist) {
+      if (booking.BookingCode.equals(venueCode)) {
+        MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
+            booking.getBookingReference(), booking.getBookingDate());
+        exist = true;
+      }
+    }
+
+    // If venue code does not exist in the bookinglist (when boolean exist is false)
+    if (!exist) {
+      MessageCli.PRINT_BOOKINGS_NONE.printMessage(venueName);
     }
   }
 
