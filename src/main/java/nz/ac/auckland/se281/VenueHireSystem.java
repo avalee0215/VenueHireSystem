@@ -317,6 +317,7 @@ public class VenueHireSystem {
   String cateringName = "0"; // Create a variable that saves the name of Catering Service
   String cateringTotal =
       "0"; // Create a variable that saves the TOTAL price of the catering service
+  String musicTotal = "0"; // Create a variable that saves the price of the music service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     // TODO implement this method
@@ -368,6 +369,11 @@ public class VenueHireSystem {
         return;
       }
     }
+
+    // Because the music service is only one, save the cost of the music service only and print out
+    // the success message.
+    this.musicTotal = "500";
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
