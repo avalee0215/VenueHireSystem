@@ -327,25 +327,21 @@ public class VenueHireSystem {
       }
     }
 
-    // Because enum shows only the cost of the Catering service per person, we need to find and save
-    // the total.
-    int bookingCapacity = 0; // find the booking capacity for the given reference
-    for (BookingSave booking : bookinglist) {
-      if (booking.BookingReference.equals(bookingReference)) {
-        bookingCapacity =
-            Integer.parseInt(booking.getBookingCapacity()); // Save the value as an integer
+    CateringService cateringService = new CateringService(cateringType);
+    for (BookingSave booking1 : bookinglist) {
+      if (booking1.BookingReference.equals(bookingReference)) {
+        cateringService.totalCostService(
+            bookingReference, booking1); // find the total cost for the catering service
+        cateringTotal =
+            cateringService
+                .getTotalCost(); // update the cateringTotal value as the total cost value
       }
     }
-    int cateringTotalint =
-        cateringType.getCostPerPerson()
-            * bookingCapacity; // Total cost of catering = cost of catering per person * number of
-    // person
-    this.cateringTotal = "" + cateringTotalint;
 
+    cateringName = cateringService.getName();
     // Catering service SUCCESSFUL message
-    this.cateringName = cateringType.getName();
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
-        "Catering (" + cateringName + ")", bookingReference);
+        "Catering (" + cateringService.getName() + ")", bookingReference);
   }
 
   public void addServiceMusic(String bookingReference) {
