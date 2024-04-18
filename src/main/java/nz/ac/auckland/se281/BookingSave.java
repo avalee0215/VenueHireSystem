@@ -8,11 +8,37 @@ public class BookingSave {
   String BookingCapacity;
   String BookingName;
 
-  public BookingSave(String name, String code, String date, String mail, String capacity) {
+  public BookingSave(
+      String reference, String name, String code, String date, String mail, String capacity) {
     this.BookingCode = code;
     this.BookingDate = date;
     this.BookingMail = mail;
     this.BookingCapacity = capacity;
     this.BookingName = name;
+    this.BookingReference = reference; // save reference for print booking
+  }
+
+  public String getBookingCode() {
+    return BookingCode;
+  }
+
+  public String getBookingName() {
+    return BookingName;
+  }
+
+  public String getBookingDate() {
+    return BookingDate;
+  }
+
+  public String getBookingMail() {
+    return BookingMail;
+  }
+
+  public String getBookingCapacity() {
+    return BookingCapacity;
+  }
+
+  public String getBookingReference() {
+    return BookingReference;
   }
 }

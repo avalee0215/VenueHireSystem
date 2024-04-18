@@ -219,6 +219,7 @@ public class VenueHireSystem {
       // change options[3] to edited capacity
       bookinglist.add(
           new BookingSave(
+              Bookingreference, // Add bookingreference information too
               bookingVenueName,
               options[0],
               options[1],
