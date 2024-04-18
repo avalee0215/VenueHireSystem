@@ -315,6 +315,8 @@ public class VenueHireSystem {
 
   // Task 3 start
   String cateringName = "0"; // Create a variable that saves the name of Catering Service
+  String cateringTotal =
+      "0"; // Create a variable that saves the TOTAL price of the catering service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     // TODO implement this method
@@ -331,6 +333,21 @@ public class VenueHireSystem {
         return;
       }
     }
+
+    // Because enum shows only the cost of the Catering service per person, we need to find and save
+    // the total.
+    int bookingCapacity = 0; // find the booking capacity for the given reference
+    for (BookingSave booking : bookinglist) {
+      if (booking.BookingReference.equals(bookingReference)) {
+        bookingCapacity =
+            Integer.parseInt(booking.getBookingCapacity()); // Save the value as an integer
+      }
+    }
+    int cateringTotalint =
+        cateringType.getCostPerPerson()
+            * bookingCapacity; // Total cost of catering = cost of catering per person * number of
+    // person
+    this.cateringTotal = "" + cateringTotalint;
 
     // Catering service SUCCESSFUL message
     this.cateringName = cateringType.getName();
