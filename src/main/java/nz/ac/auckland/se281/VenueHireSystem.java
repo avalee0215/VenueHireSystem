@@ -17,6 +17,9 @@ public class VenueHireSystem {
   public VenueHireSystem() {}
 
   public String TheNextavailabledate(String code) {
+    if (currentdate == null) {
+      return "%s";
+    }
     this.Nextavaildate = currentdate;
     ArrayList<String> dates = new ArrayList<String>();
     for (BookingSave booking : bookinglist) {
@@ -479,9 +482,8 @@ public class VenueHireSystem {
             + musicnum
             + floralnum; // Total sum is the sum of all the integer values
     String total =
-        ""
-            + totalnum; // Integer again converts to String to return String values that can be use
-                        // in the MessageCli.
+        "" + totalnum; // Integer again converts to String to return String values that can be use
+    // in the MessageCli.
 
     return total;
   }
