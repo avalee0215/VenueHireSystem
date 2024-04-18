@@ -162,7 +162,8 @@ public class VenueHireSystem {
     // TODO implement this method
     // the system's date must be set
 
-    for (BookingSave booking : bookinglist) {
+    for (BookingSave booking :
+        bookinglist) { // check that the booking for a specific date is already made
       if (booking.BookingCode.equals(options[0]) && booking.BookingDate.equals(options[1])) {
         MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
             booking.BookingName, booking.BookingDate);
@@ -188,19 +189,42 @@ public class VenueHireSystem {
     // The venue must be available on the specified date (?)
     else {
       String bookingVenueName = "";
+      String bookingCapacity = ""; // venue capacity
       for (venuesave venue : venuelist) {
         if (venue.getvenueCode().equals(options[0])) {
           bookingVenueName = venue.getvenuename();
+          bookingCapacity = venue.getcapacity();
         }
+      }
+      int bookingCapacitynum = Integer.parseInt(bookingCapacity); // convert capacity to integer
+      int currentcapacity = Integer.parseInt(options[3]); // convert given date to int
+      int twentyfivecheck = bookingCapacitynum / 4; // 25 percentage of venue capacity
+      String editedcapacity = options[3];
+      if (currentcapacity
+          < twentyfivecheck) { // if added capacity is less than 25% of venue capacity
+        editedcapacity = "" + twentyfivecheck; // convert twentivyfivecheck to string
+        MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+            options[3], editedcapacity, bookingCapacity);
+      } else if (currentcapacity > bookingCapacitynum) {
+        editedcapacity = bookingCapacity;
+        MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+            options[3], editedcapacity, bookingCapacity);
       }
       String Bookingreference = BookingReferenceGenerator.generateBookingReference();
       MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
           Bookingreference,
           bookingVenueName,
           options[1],
-          options[3]); // Successfully booking message
+          editedcapacity); // Successfully booking message
+      // change options[3] to edited capacity
       bookinglist.add(
-          new BookingSave(bookingVenueName, options[0], options[1], options[2], options[3]));
+          new BookingSave(
+              bookingVenueName,
+              options[0],
+              options[1],
+              options[2],
+              editedcapacity)); // Add new Booking information
+      // change options[3] to edited capacity
     }
   }
 
