@@ -412,6 +412,37 @@ public class VenueHireSystem {
         return;
       }
     }
+
+    // Invoice start
+    // Find values to use in the invoice by using bookingsave and venuesave
+    String bookingMail = "";
+    String bookingDate = "";
+    String bookingCode = "";
+    String bookingCapacity = "";
+    for (BookingSave booking : bookinglist) {
+      if (booking.BookingReference.equals(bookingReference)) {
+        bookingMail = booking.getBookingMail();
+        bookingDate = booking.getBookingDate();
+        bookingCode = booking.getBookingCode();
+        bookingCapacity = booking.getBookingCapacity();
+      }
+    }
+    String venueFee = "";
+    String venueName = "";
+    for (venuesave a : venuelist) {
+      if (a.venueCode.equals(bookingCode)) {
+        venueFee = a.gethirefee();
+        venueName = a.getvenuename();
+      }
+    }
+    MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
+        bookingReference,
+        bookingMail,
+        currentdate,
+        bookingDate,
+        bookingCapacity,
+        venueName); // Top Invoice
+
     // TODO implement this method
   }
 }
