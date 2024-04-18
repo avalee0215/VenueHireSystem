@@ -443,6 +443,23 @@ public class VenueHireSystem {
         bookingCapacity,
         venueName); // Top Invoice
 
-    // TODO implement this method
+    // Invoice. cost from each services and venue fee. Based on these values, the total cost will be
+    // calculated
+    if (venueFee
+        != "0") { // venueFee = 0 means that the venue has not not been used, so we don't have to
+      // print the message.
+      MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(venueFee);
+    }
+    if (cateringTotal
+        != "0") { // if cateringTotal = 0, the catering service has not been used. Therefore, we
+      // don't have to print the message.
+      MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(cateringName, cateringTotal);
+    }
+    if (musicTotal != "0") { // Same function as cateringTotal
+      MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(musicTotal);
+    }
+    if (FloralTotal != "0") { // Same function as cateringTotal
+      MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(FloralName, FloralTotal);
+    }
   }
 }
