@@ -46,7 +46,6 @@ public class VenueHireSystem {
   }
 
   public void printVenues() {
-    // TODO implement this method
 
     ArrayList<String> venuenumber = new ArrayList<>(); // Create the arraylist that save one to nine
     venuenumber.add("one");
@@ -107,16 +106,11 @@ public class VenueHireSystem {
 
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-    // TODO implement this method
-    boolean hireFeeinteger =
-        false; // check that the hireFeeinput is integer or not initially (create it to use in the
-    // if
-    // else statement)
 
     try {
       int hirefeetonumber = Integer.parseInt(hireFeeInput);
       if (hirefeetonumber > 0) { // Check if hire fee is a positive integer
-        hireFeeinteger = true;
+
       } else {
         MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
         return;
@@ -126,11 +120,9 @@ public class VenueHireSystem {
       return;
     }
 
-    boolean capacityinteger = false;
     try {
       int capacitytonumber = Integer.parseInt(capacityInput);
       if (capacitytonumber > 0) { // Check if hire fee is a positive integer
-        capacityinteger = true;
       } else {
         MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
         return;
@@ -181,14 +173,12 @@ public class VenueHireSystem {
   String currentdate = null;
 
   public void setSystemDate(String dateInput) {
-    // TODO implement this method
     // Set the system's date to the specificed data and prints a confirmation message
     this.currentdate = dateInput;
     MessageCli.DATE_SET.printMessage(dateInput);
   }
 
   public void printSystemDate() {
-    // TODO implement this method
     // prints the system's current date
     if (currentdate == null) {
       MessageCli.CURRENT_DATE.printMessage("not set");
@@ -198,7 +188,6 @@ public class VenueHireSystem {
   }
 
   public void makeBooking(String[] options) {
-    // TODO implement this method
     // the system's date must be set
 
     for (BookingSave booking :
@@ -284,7 +273,6 @@ public class VenueHireSystem {
   }
 
   public void printBookings(String venueCode) {
-    // TODO implement this method
     if (!venuecodelist.contains(venueCode)) { // If venue code doesn't exist
       MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
       return;
@@ -325,7 +313,6 @@ public class VenueHireSystem {
   String FloralName = "0"; // Create a variable that saves the name(type) of the floral service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
-    // TODO implement this method
     if (bookinglist
         .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
@@ -362,7 +349,6 @@ public class VenueHireSystem {
   }
 
   public void addServiceMusic(String bookingReference) {
-    // TODO implement this method
     if (bookinglist
         .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
@@ -382,7 +368,6 @@ public class VenueHireSystem {
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
-    // TODO implement this method
     if (bookinglist
         .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
