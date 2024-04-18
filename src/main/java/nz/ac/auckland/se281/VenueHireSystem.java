@@ -318,6 +318,8 @@ public class VenueHireSystem {
   String cateringTotal =
       "0"; // Create a variable that saves the TOTAL price of the catering service
   String musicTotal = "0"; // Create a variable that saves the price of the music service
+  String FloralTotal = "0"; // Create a variable that saves the price of the floral service
+  String FloralName = "0"; // Create a variable that saves the name(type) of the floral service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     // TODO implement this method
@@ -389,6 +391,13 @@ public class VenueHireSystem {
         return;
       }
     }
+
+    // Total cost of floral
+    int FloralTotalint = floralType.getCost();
+    this.FloralTotal = "" + FloralTotalint;
+    // Print out success message
+    this.FloralName = floralType.getName();
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Floral (" + FloralName + ")", bookingReference);
   }
 
   public void viewInvoice(String bookingReference) {
