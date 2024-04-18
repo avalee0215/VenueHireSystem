@@ -314,6 +314,7 @@ public class VenueHireSystem {
   }
 
   // Task 3 start
+  String cateringName = "0"; // Create a variable that saves the name of Catering Service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     // TODO implement this method
@@ -330,6 +331,11 @@ public class VenueHireSystem {
         return;
       }
     }
+
+    // Catering service SUCCESSFUL message
+    this.cateringName = cateringType.getName();
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
+        "Catering (" + cateringName + ")", bookingReference);
   }
 
   public void addServiceMusic(String bookingReference) {
