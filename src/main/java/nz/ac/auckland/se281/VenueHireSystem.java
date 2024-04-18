@@ -12,8 +12,35 @@ public class VenueHireSystem {
       new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
   ArrayList<BookingSave> bookinglist =
       new ArrayList<>(); // Add a new arraylist with bookinginformation for task 2
+  String Nextavaildate = ""; // the next available date for Task2.10,11
 
   public VenueHireSystem() {}
+
+  public String TheNextavailabledate(String code) {
+    this.Nextavaildate = currentdate;
+    ArrayList<String> dates = new ArrayList<String>();
+    for (BookingSave booking : bookinglist) {
+      if (booking.BookingCode.equals(code)) {
+        dates.add(booking.BookingDate);
+        System.out.println(booking.BookingDate);
+      }
+    }
+
+    while (dates.contains(Nextavaildate)) {
+      this.Nextavaildate = increaseDate(Nextavaildate);
+    }
+
+    return Nextavaildate;
+  }
+
+  public String increaseDate(String date) { // Add one day more if the date is used
+    String[] separatedate = date.split("/");
+    int dateday = Integer.parseInt(separatedate[0]);
+    dateday = dateday + 1;
+    String datedaystr = String.format("%02d", dateday);
+    String check = datedaystr + "/" + separatedate[1] + "/" + separatedate[2];
+    return check;
+  }
 
   public void printVenues() {
     // TODO implement this method
@@ -50,7 +77,11 @@ public class VenueHireSystem {
       for (int j = 0; j < venuelist.size(); j++) {
         venuesave venue = venuelist.get(j); // change code to use modified venuelist.
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.getvenuename(), venue.getvenueCode(), venue.getcapacity(), venue.gethirefee());
+            venue.getvenuename(),
+            venue.getvenueCode(),
+            venue.getcapacity(),
+            venue.gethirefee(),
+            TheNextavailabledate(venue.getvenueCode())); // Add Nextavaildate
       }
     } else // if created venues are 10 or more than 10
     {
@@ -62,7 +93,11 @@ public class VenueHireSystem {
       for (int j = 0; j < venuelist.size(); j++) {
         venuesave venue = venuelist.get(j);
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.getvenuename(), venue.getvenueCode(), venue.getcapacity(), venue.gethirefee());
+            venue.getvenuename(),
+            venue.getvenueCode(),
+            venue.getcapacity(),
+            venue.gethirefee(),
+            TheNextavailabledate(venue.getvenueCode())); // Add Nextavaildate
       }
     }
   }
