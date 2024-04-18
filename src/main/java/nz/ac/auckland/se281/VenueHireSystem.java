@@ -173,6 +173,7 @@ public class VenueHireSystem {
     }
   }
 
+  // Task 2 start
   // Use object&instances method to save the currentdate
   String currentdate = null;
 
@@ -312,16 +313,31 @@ public class VenueHireSystem {
     }
   }
 
+  // Task 3 start
+
   public void addCateringService(String bookingReference, CateringType cateringType) {
     // TODO implement this method
+    if (bookinglist
+        .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
+          "Catering", bookingReference); // Error message
+    }
+    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+      if (!booking.BookingReference.equals(bookingReference)) {
+        MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
+            "Catering", bookingReference); // Error message
+      }
+    }
   }
 
   public void addServiceMusic(String bookingReference) {
     // TODO implement this method
+
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
     // TODO implement this method
+
   }
 
   public void viewInvoice(String bookingReference) {
