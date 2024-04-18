@@ -321,23 +321,45 @@ public class VenueHireSystem {
         .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
           "Catering", bookingReference); // Error message
+      return;
     }
     for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
       if (!booking.BookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
             "Catering", bookingReference); // Error message
+        return;
       }
     }
   }
 
   public void addServiceMusic(String bookingReference) {
     // TODO implement this method
-
+    if (bookinglist
+        .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
+      return;
+    }
+    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+      if (!booking.BookingReference.equals(bookingReference)) {
+        MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
+        return;
+      }
+    }
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
     // TODO implement this method
-
+    if (bookinglist
+        .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
+      return;
+    }
+    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+      if (!booking.BookingReference.equals(bookingReference)) {
+        MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
+        return;
+      }
+    }
   }
 
   public void viewInvoice(String bookingReference) {
