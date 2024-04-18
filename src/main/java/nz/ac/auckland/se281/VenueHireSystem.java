@@ -461,5 +461,28 @@ public class VenueHireSystem {
     if (FloralTotal != "0") { // Same function as cateringTotal
       MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(FloralName, FloralTotal);
     }
+
+    String totalAmount =
+        CountTotal(venueFee, cateringTotal, musicTotal, FloralTotal); // calculate the total cost
+    MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(totalAmount); // Bottom Invoice Message
+  }
+
+  public String CountTotal(String venue, String catering, String music, String floral) {
+    int venuenum = Integer.parseInt(venue); // Convert String values to Integers for calculation
+    int cateringnum = Integer.parseInt(catering);
+    int musicnum = Integer.parseInt(music);
+    int floralnum = Integer.parseInt(floral);
+
+    int totalnum =
+        venuenum
+            + cateringnum
+            + musicnum
+            + floralnum; // Total sum is the sum of all the integer values
+    String total =
+        ""
+            + totalnum; // Integer again converts to String to return String values that can be use
+                        // in the MessageCli.
+
+    return total;
   }
 }
