@@ -401,6 +401,17 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
+    if (bookinglist
+        .isEmpty()) { // if there is no bookingReference(makeBooking has not been used yet)
+      MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
+      return;
+    }
+    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+      if (!booking.BookingReference.equals(bookingReference)) {
+        MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
+        return;
+      }
+    }
     // TODO implement this method
   }
 }
