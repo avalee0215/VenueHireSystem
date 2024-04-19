@@ -8,11 +8,24 @@ public class VenueHireSystem {
   private ArrayList<Venue> venueList =
       new ArrayList<>(); // New Arraylist to save venue's information. Change <String> to
   // <venuesave> so we can use the constructor
+
   private ArrayList<String> venueCodeList =
       new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
   private ArrayList<Booking> bookingList =
       new ArrayList<>(); // Add a new arraylist with bookinginformation for task 2
   private String nextAvailableDate = ""; // the next available date for Task2.10,11
+  private String systemDate = null; // system date for Task 2
+
+  private String cateringName =
+      "0"; // Create a variable that saves the name of Catering Service Task 3
+  private String cateringTotalCost =
+      "0"; // Create a variable that saves the TOTAL price of the catering service Task 3
+  private String musicTotalCost =
+      "0"; // Create a variable that saves the price of the music service Task 3
+  private String floralTotalCost =
+      "0"; // Create a variable that saves the price of the floral service Task 3
+  private String floralName =
+      "0"; // Create a variable that saves the name(type) of the floral service Task 3
 
   public VenueHireSystem() {}
 
@@ -169,8 +182,6 @@ public class VenueHireSystem {
   }
 
   // Task 2 start
-  // Use object&instances method to save the currentdate
-  private String systemDate = null;
 
   public void setSystemDate(String dateInput) {
     // Set the system's date to the specificed data and prints a confirmation message
@@ -254,21 +265,6 @@ public class VenueHireSystem {
     }
   }
 
-  private static boolean compareDate(String current, String compare) {
-    String[] splitSystemDate = current.split("/"); // separate both strings by day, month, and year
-    String[] splitGivenDate = compare.split("/");
-    for (int i = 2; i >= 0; i--) {
-      int systemDateDay = Integer.parseInt(splitSystemDate[i]); // compare year - month - date order
-      int givenDateDay = Integer.parseInt(splitGivenDate[i]);
-      if (systemDateDay
-          > givenDateDay) { // if the current date is larger than booking date, it means the booking
-        // is unavailable.
-        return false; // return false in this case and break the class
-      }
-    }
-    return true;
-  }
-
   public void printBookings(String venueCode) {
     if (!venueCodeList.contains(venueCode)) { // If venue code doesn't exist
       MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
@@ -302,15 +298,6 @@ public class VenueHireSystem {
   }
 
   // Task 3 start
-  private String cateringName = "0"; // Create a variable that saves the name of Catering Service
-  private String cateringTotalCost =
-      "0"; // Create a variable that saves the TOTAL price of the catering service
-  private String musicTotalCost =
-      "0"; // Create a variable that saves the price of the music service
-  private String floralTotalCost =
-      "0"; // Create a variable that saves the price of the floral service
-  private String floralName =
-      "0"; // Create a variable that saves the name(type) of the floral service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     if (bookingList
@@ -479,5 +466,20 @@ public class VenueHireSystem {
     // in the MessageCli.
 
     return totalCostAsString;
+  }
+
+  private static boolean compareDate(String current, String compare) {
+    String[] splitSystemDate = current.split("/"); // separate both strings by day, month, and year
+    String[] splitGivenDate = compare.split("/");
+    for (int i = 2; i >= 0; i--) {
+      int systemDateDay = Integer.parseInt(splitSystemDate[i]); // compare year - month - date order
+      int givenDateDay = Integer.parseInt(splitGivenDate[i]);
+      if (systemDateDay
+          > givenDateDay) { // if the current date is larger than booking date, it means the booking
+        // is unavailable.
+        return false; // return false in this case and break the class
+      }
+    }
+    return true;
   }
 }
