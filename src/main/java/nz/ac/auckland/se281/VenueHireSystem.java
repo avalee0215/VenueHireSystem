@@ -16,7 +16,7 @@ public class VenueHireSystem {
 
   public VenueHireSystem() {}
 
-  public String TheNextavailabledate(String code) {
+  public String findNextAvailableDate(String code) {
     if (currentdate == null) {
       return "%s";
     }
@@ -83,7 +83,7 @@ public class VenueHireSystem {
             venue.getvenueCode(),
             venue.getcapacity(),
             venue.gethirefee(),
-            TheNextavailabledate(venue.getvenueCode())); // Add Nextavaildate
+            findNextAvailableDate(venue.getvenueCode())); // Add Nextavaildate
       }
     } else // if created venues are 10 or more than 10
     {
@@ -99,7 +99,7 @@ public class VenueHireSystem {
             venue.getvenueCode(),
             venue.getcapacity(),
             venue.gethirefee(),
-            TheNextavailabledate(venue.getvenueCode())); // Add Nextavaildate
+            findNextAvailableDate(venue.getvenueCode())); // Add Nextavaildate
       }
     }
   }
@@ -453,11 +453,12 @@ public class VenueHireSystem {
     }
 
     String totalAmount =
-        CountTotal(venueFee, cateringTotal, musicTotal, FloralTotal); // calculate the total cost
+        countTotalCost(
+            venueFee, cateringTotal, musicTotal, FloralTotal); // calculate the total cost
     MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(totalAmount); // Bottom Invoice Message
   }
 
-  public String CountTotal(String venue, String catering, String music, String floral) {
+  public String countTotalCost(String venue, String catering, String music, String floral) {
     int venuenum = Integer.parseInt(venue); // Convert String values to Integers for calculation
     int cateringnum = Integer.parseInt(catering);
     int musicnum = Integer.parseInt(music);
