@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 public class Venue {
+  // Venue class to store venue information
   private String venueName;
   private String venueCode;
   private String capacityInput;

@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Types.CateringType;
 
 public class CateringService extends Service {
+  // CateringService class to store catering service information. Subclass of Service class
   private int
       costPerPerson; // as the catering service provides the cost per person only, new variable is
   // needed

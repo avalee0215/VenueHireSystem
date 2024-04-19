@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 public abstract class Service {
+  // Service abstract class to store service information
   protected String
       name; // name is a type of the service. For example, when I use B in a catering service, the
   // name will be 'Breakfast'
@@ -21,5 +22,6 @@ public abstract class Service {
   public abstract void totalCostService(
       String reference,
       Booking
-          booking); // abstract class to use for the @Override. This will state the new totalcost
+          booking); // totalCostService is an abstract method that will be implemented in the
+                    // subclasses
 }

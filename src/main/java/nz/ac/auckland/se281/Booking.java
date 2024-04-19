@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class Booking {
+public class Booking { // Booking class to store booking information
   private String bookingReference;
   private String bookingCode;
   private String bookingDate;
@@ -9,7 +9,12 @@ public class Booking {
   private String bookingName;
 
   public Booking(
-      String reference, String name, String code, String date, String mail, String capacity) {
+      String reference,
+      String name,
+      String code,
+      String date,
+      String mail,
+      String capacity) { // constructor
     this.bookingCode = code;
     this.bookingDate = date;
     this.bookingMail = mail;
