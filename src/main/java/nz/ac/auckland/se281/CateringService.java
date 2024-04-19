@@ -3,7 +3,8 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Types.CateringType;
 
 public class CateringService extends Service {
-  int costPerPerson; // as the catering service provides the cost per person only, new variable is
+  private int
+      costPerPerson; // as the catering service provides the cost per person only, new variable is
   // needed
   private int
       venueCapacity; // find the venue capacity of the given reference number. It won't be change

@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class FloralService extends Service {
-  int cost; // Integer cost that will soon change to String totalCost
+  private int cost; // Integer cost that will soon change to String totalCost
 
   public FloralService(FloralType floralType) {
     super();
