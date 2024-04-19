@@ -13,19 +13,19 @@ public class Venue {
     this.hireFeeInput = hirefeeInput;
   }
 
-  public String getvenuename() {
+  public String getVenueName() {
     return venueName;
   }
 
-  public String getvenueCode() {
+  public String getVenueCode() {
     return venueCode;
   }
 
-  public String getcapacity() {
+  public String getCapacity() {
     return capacityInput;
   }
 
-  public String gethirefee() {
+  public String getHireFee() {
     return hireFeeInput;
   }
 }

@@ -79,11 +79,11 @@ public class VenueHireSystem {
       for (int j = 0; j < venueList.size(); j++) {
         Venue venue = venueList.get(j); // change code to use modified venuelist.
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.getvenuename(),
-            venue.getvenueCode(),
-            venue.getcapacity(),
-            venue.gethirefee(),
-            findNextAvailableDate(venue.getvenueCode())); // Add Nextavaildate
+            venue.getVenueName(),
+            venue.getVenueCode(),
+            venue.getCapacity(),
+            venue.getHireFee(),
+            findNextAvailableDate(venue.getVenueCode())); // Add Nextavaildate
       }
     } else // if created venues are 10 or more than 10
     {
@@ -95,11 +95,11 @@ public class VenueHireSystem {
       for (int j = 0; j < venueList.size(); j++) {
         Venue venue = venueList.get(j);
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.getvenuename(),
-            venue.getvenueCode(),
-            venue.getcapacity(),
-            venue.gethirefee(),
-            findNextAvailableDate(venue.getvenueCode())); // Add Nextavaildate
+            venue.getVenueName(),
+            venue.getVenueCode(),
+            venue.getCapacity(),
+            venue.getHireFee(),
+            findNextAvailableDate(venue.getVenueCode())); // Add Nextavaildate
       }
     }
   }
@@ -137,7 +137,7 @@ public class VenueHireSystem {
 
     // Check if the venue code is already used
     for (Venue item : venueList) {
-      if (item.getvenueCode().equals(venueCode)) {
+      if (item.getVenueCode().equals(venueCode)) {
         isVenueCodeRepeated = true;
         countRepeatedVenue = venueList.indexOf(item);
         break;
@@ -152,7 +152,7 @@ public class VenueHireSystem {
       String usedVenue =
           venueList
               .get(countRepeatedVenue)
-              .getvenuename(); // to find out the name of the venue that already used the code
+              .getVenueName(); // to find out the name of the venue that already used the code
       MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venueCode, usedVenue);
     } else {
 
@@ -219,9 +219,9 @@ public class VenueHireSystem {
       String venueName = "";
       String venueCapacity = ""; // venue capacity
       for (Venue venue : venueList) {
-        if (venue.getvenueCode().equals(options[0])) {
-          venueName = venue.getvenuename();
-          venueCapacity = venue.getcapacity();
+        if (venue.getVenueCode().equals(options[0])) {
+          venueName = venue.getVenueName();
+          venueCapacity = venue.getCapacity();
         }
       }
       int capacityAsNumber = Integer.parseInt(venueCapacity); // convert capacity to integer
@@ -278,8 +278,8 @@ public class VenueHireSystem {
     // If venue code exist
     String venueName = "";
     for (Venue venue : venueList) {
-      if (venue.getvenueCode().equals(venueCode)) {
-        venueName = venue.getvenuename();
+      if (venue.getVenueCode().equals(venueCode)) {
+        venueName = venue.getVenueName();
         MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName); // Print the Header
         break;
       }
@@ -418,8 +418,8 @@ public class VenueHireSystem {
     String venueName = "";
     for (Venue a : venueList) {
       if (a.venueCode.equals(bookingCode)) {
-        venueFee = a.gethirefee();
-        venueName = a.getvenuename();
+        venueFee = a.getHireFee();
+        venueName = a.getVenueName();
       }
     }
     MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
