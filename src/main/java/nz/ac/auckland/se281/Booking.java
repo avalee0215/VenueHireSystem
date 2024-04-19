@@ -1,44 +1,44 @@
 package nz.ac.auckland.se281;
 
 public class Booking {
-  String BookingReference; // not used yet
-  String BookingCode;
-  String BookingDate;
-  String BookingMail;
-  String BookingCapacity;
-  String BookingName;
+  String bookingReference; // not used yet
+  String bookingCode;
+  String bookingDate;
+  String bookingMail;
+  String bookingCapacity;
+  String bookingName;
 
   public Booking(
       String reference, String name, String code, String date, String mail, String capacity) {
-    this.BookingCode = code;
-    this.BookingDate = date;
-    this.BookingMail = mail;
-    this.BookingCapacity = capacity;
-    this.BookingName = name;
-    this.BookingReference = reference; // save reference for print booking
+    this.bookingCode = code;
+    this.bookingDate = date;
+    this.bookingMail = mail;
+    this.bookingCapacity = capacity;
+    this.bookingName = name;
+    this.bookingReference = reference; // save reference for print booking
   }
 
   public String getBookingCode() {
-    return BookingCode;
+    return bookingCode;
   }
 
   public String getBookingName() {
-    return BookingName;
+    return bookingName;
   }
 
   public String getBookingDate() {
-    return BookingDate;
+    return bookingDate;
   }
 
   public String getBookingMail() {
-    return BookingMail;
+    return bookingMail;
   }
 
   public String getBookingCapacity() {
-    return BookingCapacity;
+    return bookingCapacity;
   }
 
   public String getBookingReference() {
-    return BookingReference;
+    return bookingReference;
   }
 }

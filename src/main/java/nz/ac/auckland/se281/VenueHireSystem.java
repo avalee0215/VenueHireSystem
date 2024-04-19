@@ -23,9 +23,9 @@ public class VenueHireSystem {
     this.nextAvailableDate = systemDate;
     ArrayList<String> dates = new ArrayList<String>();
     for (Booking booking : bookingList) {
-      if (booking.BookingCode.equals(code)) {
-        dates.add(booking.BookingDate);
-        System.out.println(booking.BookingDate);
+      if (booking.bookingCode.equals(code)) {
+        dates.add(booking.bookingDate);
+        System.out.println(booking.bookingDate);
       }
     }
 
@@ -192,9 +192,9 @@ public class VenueHireSystem {
 
     for (Booking booking :
         bookingList) { // check that the booking for a specific date is already made
-      if (booking.BookingCode.equals(options[0]) && booking.BookingDate.equals(options[1])) {
+      if (booking.bookingCode.equals(options[0]) && booking.bookingDate.equals(options[1])) {
         MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
-            booking.BookingName, booking.BookingDate);
+            booking.bookingName, booking.bookingDate);
         return;
       }
     }
@@ -288,7 +288,7 @@ public class VenueHireSystem {
     // If venue code does exist in the bookinglist
     boolean isVenueCodeExist = false;
     for (Booking booking : bookingList) {
-      if (booking.BookingCode.equals(venueCode)) {
+      if (booking.bookingCode.equals(venueCode)) {
         MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
             booking.getBookingReference(), booking.getBookingDate());
         isVenueCodeExist = true;
@@ -317,7 +317,7 @@ public class VenueHireSystem {
       return;
     }
     for (Booking booking : bookingList) { // if there is no bookingReference in the booklist
-      if (!booking.BookingReference.equals(bookingReference)) {
+      if (!booking.bookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
             "Catering", bookingReference); // Error message
         return;
@@ -326,7 +326,7 @@ public class VenueHireSystem {
 
     CateringService cateringService = new CateringService(cateringType);
     for (Booking booking1 : bookingList) {
-      if (booking1.BookingReference.equals(bookingReference)) {
+      if (booking1.bookingReference.equals(bookingReference)) {
         cateringService.totalCostService(
             bookingReference, booking1); // find the total cost for the catering service
         cateringTotalCost =
@@ -348,7 +348,7 @@ public class VenueHireSystem {
       return;
     }
     for (Booking booking : bookingList) { // if there is no bookingReference in the booklist
-      if (!booking.BookingReference.equals(bookingReference)) {
+      if (!booking.bookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
         return;
       }
@@ -368,7 +368,7 @@ public class VenueHireSystem {
       return;
     }
     for (Booking booking : bookingList) { // if there is no bookingReference in the booklist
-      if (!booking.BookingReference.equals(bookingReference)) {
+      if (!booking.bookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
         return;
       }
@@ -376,7 +376,7 @@ public class VenueHireSystem {
 
     FloralService floralService = new FloralService(floralType);
     for (Booking booking1 : bookingList) {
-      if (booking1.BookingReference.equals(bookingReference)) {
+      if (booking1.bookingReference.equals(bookingReference)) {
         floralService.totalCostService(bookingReference, booking1);
         floralTotalCost = floralService.getTotalCost();
       }
@@ -394,7 +394,7 @@ public class VenueHireSystem {
       return;
     }
     for (Booking booking : bookingList) { // if there is no bookingReference in the booklist
-      if (!booking.BookingReference.equals(bookingReference)) {
+      if (!booking.bookingReference.equals(bookingReference)) {
         MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
         return;
       }
@@ -407,7 +407,7 @@ public class VenueHireSystem {
     String bookingCode = "";
     String bookingCapacity = "";
     for (Booking booking : bookingList) {
-      if (booking.BookingReference.equals(bookingReference)) {
+      if (booking.bookingReference.equals(bookingReference)) {
         bookingMail = booking.getBookingMail();
         bookingDate = booking.getBookingDate();
         bookingCode = booking.getBookingCode();
@@ -471,9 +471,8 @@ public class VenueHireSystem {
             + musicFeeAsNumber
             + floralFeeAsNumber; // Total sum is the sum of all the integer values
     String totalCostAsString =
-        ""
-            + totalCostAsNumber; // Integer again converts to String to return String values that
-                                 // can be use
+        "" + totalCostAsNumber; // Integer again converts to String to return String values that
+    // can be use
     // in the MessageCli.
 
     return totalCostAsString;
