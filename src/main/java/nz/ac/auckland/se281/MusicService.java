@@ -9,5 +9,5 @@ public class MusicService extends Service {
   }
 
   @Override
-  public void totalCostService(String bookingReference, BookingSave booking) {}
+  public void totalCostService(String bookingReference, Booking booking) {}
 }

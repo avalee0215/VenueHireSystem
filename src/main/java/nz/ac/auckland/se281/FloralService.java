@@ -14,9 +14,8 @@ public class FloralService extends Service {
   @Override
   public void totalCostService(
       String bookingReference,
-      BookingSave
-          booking) { // Compare to the Catering Service, the total cost is already given, so any
-                     // further calculation is not required
+      Booking booking) { // Compare to the Catering Service, the total cost is already given, so any
+    // further calculation is not required
     this.totalCost = "" + cost; // Integer to String
   }
 }

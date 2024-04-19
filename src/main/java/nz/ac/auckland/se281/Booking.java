@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class BookingSave {
+public class Booking {
   String BookingReference; // not used yet
   String BookingCode;
   String BookingDate;
@@ -8,7 +8,7 @@ public class BookingSave {
   String BookingCapacity;
   String BookingName;
 
-  public BookingSave(
+  public Booking(
       String reference, String name, String code, String date, String mail, String capacity) {
     this.BookingCode = code;
     this.BookingDate = date;

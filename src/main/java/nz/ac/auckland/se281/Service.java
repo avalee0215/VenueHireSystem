@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 public abstract class Service {
   String
       name; // name is a type of the service. For example, when I use B in a catering service, the
-            // name will be 'Breakfast'
+  // name will be 'Breakfast'
   String totalCost; // total cost is the a cost of that specific type of the service.
 
   public Service() {
@@ -20,6 +20,6 @@ public abstract class Service {
 
   public abstract void totalCostService(
       String reference,
-      BookingSave
+      Booking
           booking); // abstract class to use for the @Override. This will state the new totalcost
 }

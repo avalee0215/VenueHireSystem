@@ -10,7 +10,7 @@ public class VenueHireSystem {
   // <venuesave> so we can use the constructor
   ArrayList<String> venuecodelist =
       new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
-  ArrayList<BookingSave> bookinglist =
+  ArrayList<Booking> bookinglist =
       new ArrayList<>(); // Add a new arraylist with bookinginformation for task 2
   String Nextavaildate = ""; // the next available date for Task2.10,11
 
@@ -22,7 +22,7 @@ public class VenueHireSystem {
     }
     this.Nextavaildate = currentdate;
     ArrayList<String> dates = new ArrayList<String>();
-    for (BookingSave booking : bookinglist) {
+    for (Booking booking : bookinglist) {
       if (booking.BookingCode.equals(code)) {
         dates.add(booking.BookingDate);
         System.out.println(booking.BookingDate);
@@ -190,7 +190,7 @@ public class VenueHireSystem {
   public void makeBooking(String[] options) {
     // the system's date must be set
 
-    for (BookingSave booking :
+    for (Booking booking :
         bookinglist) { // check that the booking for a specific date is already made
       if (booking.BookingCode.equals(options[0]) && booking.BookingDate.equals(options[1])) {
         MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
@@ -246,7 +246,7 @@ public class VenueHireSystem {
           editedcapacity); // Successfully booking message
       // change options[3] to edited capacity
       bookinglist.add(
-          new BookingSave(
+          new Booking(
               Bookingreference, // Add bookingreference information too
               bookingVenueName,
               options[0],
@@ -290,7 +290,7 @@ public class VenueHireSystem {
 
     // If venue code does exist in the bookinglist
     boolean exist = false;
-    for (BookingSave booking : bookinglist) {
+    for (Booking booking : bookinglist) {
       if (booking.BookingCode.equals(venueCode)) {
         MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
             booking.getBookingReference(), booking.getBookingDate());
@@ -319,7 +319,7 @@ public class VenueHireSystem {
           "Catering", bookingReference); // Error message
       return;
     }
-    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+    for (Booking booking : bookinglist) { // if there is no bookingReference in the booklist
       if (!booking.BookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage(
             "Catering", bookingReference); // Error message
@@ -328,7 +328,7 @@ public class VenueHireSystem {
     }
 
     CateringService cateringService = new CateringService(cateringType);
-    for (BookingSave booking1 : bookinglist) {
+    for (Booking booking1 : bookinglist) {
       if (booking1.BookingReference.equals(bookingReference)) {
         cateringService.totalCostService(
             bookingReference, booking1); // find the total cost for the catering service
@@ -350,7 +350,7 @@ public class VenueHireSystem {
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
       return;
     }
-    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+    for (Booking booking : bookinglist) { // if there is no bookingReference in the booklist
       if (!booking.BookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
         return;
@@ -370,7 +370,7 @@ public class VenueHireSystem {
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
       return;
     }
-    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+    for (Booking booking : bookinglist) { // if there is no bookingReference in the booklist
       if (!booking.BookingReference.equals(bookingReference)) {
         MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
         return;
@@ -378,7 +378,7 @@ public class VenueHireSystem {
     }
 
     FloralService floralService = new FloralService(floralType);
-    for (BookingSave booking1 : bookinglist) {
+    for (Booking booking1 : bookinglist) {
       if (booking1.BookingReference.equals(bookingReference)) {
         floralService.totalCostService(bookingReference, booking1);
         FloralTotal = floralService.getTotalCost();
@@ -396,7 +396,7 @@ public class VenueHireSystem {
       MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
       return;
     }
-    for (BookingSave booking : bookinglist) { // if there is no bookingReference in the booklist
+    for (Booking booking : bookinglist) { // if there is no bookingReference in the booklist
       if (!booking.BookingReference.equals(bookingReference)) {
         MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
         return;
@@ -409,7 +409,7 @@ public class VenueHireSystem {
     String bookingDate = "";
     String bookingCode = "";
     String bookingCapacity = "";
-    for (BookingSave booking : bookinglist) {
+    for (Booking booking : bookinglist) {
       if (booking.BookingReference.equals(bookingReference)) {
         bookingMail = booking.getBookingMail();
         bookingDate = booking.getBookingDate();
