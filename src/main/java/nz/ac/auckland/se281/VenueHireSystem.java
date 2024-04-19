@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  ArrayList<venuesave> venuelist =
+  ArrayList<Venue> venuelist =
       new ArrayList<>(); // New Arraylist to save venue's information. Change <String> to
   // <venuesave> so we can use the constructor
   ArrayList<String> venuecodelist =
@@ -77,7 +77,7 @@ public class VenueHireSystem {
             "s"); // print the message stating how many venues are there
       }
       for (int j = 0; j < venuelist.size(); j++) {
-        venuesave venue = venuelist.get(j); // change code to use modified venuelist.
+        Venue venue = venuelist.get(j); // change code to use modified venuelist.
         MessageCli.VENUE_ENTRY.printMessage(
             venue.getvenuename(),
             venue.getvenueCode(),
@@ -93,7 +93,7 @@ public class VenueHireSystem {
           String.valueOf(venuelistsize),
           "s"); // print the message stating how many venues are there
       for (int j = 0; j < venuelist.size(); j++) {
-        venuesave venue = venuelist.get(j);
+        Venue venue = venuelist.get(j);
         MessageCli.VENUE_ENTRY.printMessage(
             venue.getvenuename(),
             venue.getvenueCode(),
@@ -136,7 +136,7 @@ public class VenueHireSystem {
     int repeatedvenuenumber = 0;
 
     // Check if the venue code is already used
-    for (venuesave item : venuelist) {
+    for (Venue item : venuelist) {
       if (item.getvenueCode().equals(venueCode)) {
         repeatedvenueCode = true;
         repeatedvenuenumber = venuelist.indexOf(item);
@@ -159,7 +159,7 @@ public class VenueHireSystem {
       MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(
           venueName, venueCode); // Print out Successfully created venue by using MessageCli
       venuelist.add(
-          new venuesave(
+          new Venue(
               venueName,
               venueCode,
               capacityInput,
@@ -218,7 +218,7 @@ public class VenueHireSystem {
     else {
       String bookingVenueName = "";
       String bookingCapacity = ""; // venue capacity
-      for (venuesave venue : venuelist) {
+      for (Venue venue : venuelist) {
         if (venue.getvenueCode().equals(options[0])) {
           bookingVenueName = venue.getvenuename();
           bookingCapacity = venue.getcapacity();
@@ -280,7 +280,7 @@ public class VenueHireSystem {
 
     // If venue code exist
     String venueName = "";
-    for (venuesave venue : venuelist) {
+    for (Venue venue : venuelist) {
       if (venue.getvenueCode().equals(venueCode)) {
         venueName = venue.getvenuename();
         MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName); // Print the Header
@@ -419,7 +419,7 @@ public class VenueHireSystem {
     }
     String venueFee = "";
     String venueName = "";
-    for (venuesave a : venuelist) {
+    for (Venue a : venuelist) {
       if (a.venueCode.equals(bookingCode)) {
         venueFee = a.gethirefee();
         venueName = a.getvenuename();
