@@ -377,12 +377,17 @@ public class VenueHireSystem {
       }
     }
 
-    // Total cost of floral
-    int FloralTotalint = floralType.getCost();
-    this.FloralTotal = "" + FloralTotalint;
-    // Print out success message
-    this.FloralName = floralType.getName();
-    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Floral (" + FloralName + ")", bookingReference);
+    FloralService floralService = new FloralService(floralType);
+    for (BookingSave booking1 : bookinglist) {
+      if (booking1.BookingReference.equals(bookingReference)) {
+        floralService.totalCostService(bookingReference, booking1);
+        FloralTotal = floralService.getTotalCost();
+      }
+    }
+
+    FloralName = floralService.getName();
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
+        "Floral (" + floralService.name + ")", bookingReference);
   }
 
   public void viewInvoice(String bookingReference) {
