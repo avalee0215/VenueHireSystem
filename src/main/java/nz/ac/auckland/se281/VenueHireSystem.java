@@ -5,14 +5,14 @@ import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  ArrayList<Venue> venueList =
+  private ArrayList<Venue> venueList =
       new ArrayList<>(); // New Arraylist to save venue's information. Change <String> to
   // <venuesave> so we can use the constructor
-  ArrayList<String> venueCodeList =
+  private ArrayList<String> venueCodeList =
       new ArrayList<String>(); // Add a new arraylist with venuecodes only for task 2
-  ArrayList<Booking> bookingList =
+  private ArrayList<Booking> bookingList =
       new ArrayList<>(); // Add a new arraylist with bookinginformation for task 2
-  String nextAvailableDate = ""; // the next available date for Task2.10,11
+  private String nextAvailableDate = ""; // the next available date for Task2.10,11
 
   public VenueHireSystem() {}
 
@@ -170,7 +170,7 @@ public class VenueHireSystem {
 
   // Task 2 start
   // Use object&instances method to save the currentdate
-  String systemDate = null;
+  private String systemDate = null;
 
   public void setSystemDate(String dateInput) {
     // Set the system's date to the specificed data and prints a confirmation message
@@ -302,12 +302,15 @@ public class VenueHireSystem {
   }
 
   // Task 3 start
-  String cateringName = "0"; // Create a variable that saves the name of Catering Service
-  String cateringTotalCost =
+  private String cateringName = "0"; // Create a variable that saves the name of Catering Service
+  private String cateringTotalCost =
       "0"; // Create a variable that saves the TOTAL price of the catering service
-  String musicTotalCost = "0"; // Create a variable that saves the price of the music service
-  String floralTotalCost = "0"; // Create a variable that saves the price of the floral service
-  String floralName = "0"; // Create a variable that saves the name(type) of the floral service
+  private String musicTotalCost =
+      "0"; // Create a variable that saves the price of the music service
+  private String floralTotalCost =
+      "0"; // Create a variable that saves the price of the floral service
+  private String floralName =
+      "0"; // Create a variable that saves the name(type) of the floral service
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
     if (bookingList
