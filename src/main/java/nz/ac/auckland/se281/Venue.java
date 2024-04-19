@@ -1,10 +1,10 @@
 package nz.ac.auckland.se281;
 
 public class Venue {
-  String venueName;
-  String venueCode;
-  String capacityInput;
-  String hireFeeInput;
+  private String venueName;
+  private String venueCode;
+  private String capacityInput;
+  private String hireFeeInput;
 
   public Venue(String venueName, String venueCode, String capacityInput, String hirefeeInput) {
     this.venueName = venueName;

@@ -1,12 +1,12 @@
 package nz.ac.auckland.se281;
 
 public class Booking {
-  String bookingReference; // not used yet
-  String bookingCode;
-  String bookingDate;
-  String bookingMail;
-  String bookingCapacity;
-  String bookingName;
+  private String bookingReference;
+  private String bookingCode;
+  private String bookingDate;
+  private String bookingMail;
+  private String bookingCapacity;
+  private String bookingName;
 
   public Booking(
       String reference, String name, String code, String date, String mail, String capacity) {
