@@ -19,9 +19,5 @@ public abstract class Service {
     return name;
   }
 
-  public abstract void totalCostService(
-      String reference,
-      Booking
-          booking); // totalCostService is an abstract method that will be implemented in the
-                    // subclasses
+  public abstract void totalCostService(String reference, Booking booking);
 }
